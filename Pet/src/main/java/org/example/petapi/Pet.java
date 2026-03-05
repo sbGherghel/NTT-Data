@@ -1,12 +1,20 @@
 package org.example.petapi;
 
-
+import jakarta.persistence.*;
+@Entity
+@Table(name = "pets")
 public class Pet {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private String owner;
     private String type;
     private String race;
     private int realAge;
+
+    public Pet() {}
 
     //Constructor
     public Pet(String name, String owner, String type, String race, int realAge){
@@ -33,8 +41,12 @@ public class Pet {
     public int getRealAge(){
         return realAge;
     }
+    public Long getId() {
+        return id;
+    }
 
     //calculate human age
+    @Transient
     public int getHumanAge(){
         if("dog".equalsIgnoreCase(this.type)){
             return this.realAge*7;
@@ -59,5 +71,8 @@ public class Pet {
     }
     public void setRealAge(int realAge) {
         this.realAge = realAge;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 }

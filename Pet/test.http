@@ -1,0 +1,33 @@
+### Create a New Pet (POST)
+POST http://localhost:8081/api/pets
+Content-Type: application/json
+
+{
+  "name": "Rex",
+  "owner": "Alice",
+  "type": "dog",
+  "race": "German Shepherd",
+  "realAge": 3
+}
+
+Invoke-RestMethod -Method Post -Uri http://localhost:8081/api/pets `
+-ContentType "application/json" `
+-Body '{"name": "Rex", "owner": "Alice", "type": "dog", "race": "German Shepherd", "realAge": 3}'
+
+### Get All Pets (GET)
+GET http://localhost:8081/api/pets
+
+### Update a Pet (PUT) - Replace 1 with the actual ID returned from the POST
+PUT http://localhost:8081/api/pets/1
+Content-Type: application/json
+
+{
+  "name": "Reximus",
+  "owner": "Alice",
+  "type": "dog",
+  "race": "German Shepherd",
+  "realAge": 4
+}
+
+### Delete a Pet (DELETE)
+DELETE http://localhost:8081/api/pets/1
